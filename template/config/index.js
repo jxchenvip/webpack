@@ -4,6 +4,30 @@
 
 const path = require('path')
 
+const buildConfig = () => {
+  const { DEPLOY_ENV, NODE_ENV } = process.env;
+  if (NODE_ENV !== 'production') return {};
+  console.log('DEPLOY_ENV:', DEPLOY_ENV);
+  const maps = {
+    dev: {
+      assetsPublicPath: '/',
+    },
+    108: {
+      assetsPublicPath: '/',
+    },
+    109: {
+      assetsPublicPath: '/',
+    },
+    staging: {
+      assetsPublicPath: '/',
+    },
+    release: {
+      assetsPublicPath: '/',
+    },
+  };
+  return maps[DEPLOY_ENV] ? maps[DEPLOY_ENV] : {};
+};
+
 module.exports = {
   dev: {
 
@@ -72,6 +96,7 @@ module.exports = {
     // View the bundle analyzer report after build finishes:
     // `npm run build --report`
     // Set to `true` or `false` to always turn it on or off
-    bundleAnalyzerReport: process.env.npm_config_report
+    bundleAnalyzerReport: process.env.npm_config_report,
+    ...buildConfig()
   }
 }
