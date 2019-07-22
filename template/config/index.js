@@ -3,11 +3,13 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const chalk = require('chalk')
 
 const buildConfig = () => {
   const { DEPLOY_ENV, NODE_ENV } = process.env;
   if (NODE_ENV !== 'production') return {};
-  console.log('DEPLOY_ENV:', DEPLOY_ENV);
+  console.log(chalk.green(`【发布分支为】: ${DEPLOY_ENV}分支`));
+  console.log(chalk.green(`【布署环境为】: ${DEPLOY_ENV}环境`));
   const maps = {
     dev: {
       assetsPublicPath: '/',
@@ -25,7 +27,9 @@ const buildConfig = () => {
       assetsPublicPath: '/',
     },
   };
-  return maps[DEPLOY_ENV] ? maps[DEPLOY_ENV] : {};
+  const res = maps[DEPLOY_ENV] ? maps[DEPLOY_ENV] : {};
+  console.log(chalk.green(`【build】: ${JSON.stringify(res)}`));
+  return res;
 };
 
 module.exports = {
