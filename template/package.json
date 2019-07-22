@@ -22,7 +22,13 @@
     {{#lint}}
     "lint": "eslint --ext .js,.vue src{{#unit}} test/unit{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}",
     {{/lint}}
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "build:dev": "DEPLOY_ENV=dev node build/build.js",
+    "build:108": "DEPLOY_ENV=108 node build/build.js",
+    "build:109": "DEPLOY_ENV=109 node build/build.js",
+    "build:staging": "DEPLOY_ENV=staging node build/build.js",
+    "build:release": "DEPLOY_ENV=release node build/build.js",
+
   },
   "dependencies": {
     "vue": "^2.5.2"{{#router}},
