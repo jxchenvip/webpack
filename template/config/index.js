@@ -32,9 +32,14 @@ const buildConfig = () => {
   };
   const res = maps[DEPLOY_ENV] ? maps[DEPLOY_ENV] : {};
   const { notes, ...others } = res;
-  console.log(chalk.green(`【发布分支为】: ${DEPLOY_ENV}分支`));
-  console.log(chalk.green(`【布署环境为】: ${notes}`));
-  console.log(chalk.green(`【build】: ${JSON.stringify(others)}`));
+  if(DEPLOY_ENV === undefined) {
+    console.log(chalk.green(`【提示】: 可以布署到任意域名根目录下`));
+    console.log(chalk.green(`【提示】: {assetsPublicPath: '/'}`));
+  } else {
+    console.log(chalk.green(`【发布分支为】: ${DEPLOY_ENV}分支`));
+    console.log(chalk.green(`【布署环境为】: ${notes}`));
+    console.log(chalk.green(`【build】: ${JSON.stringify(others)}`));
+  }
   return others;
 };
 
@@ -85,6 +90,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
+    // assetsPublicPath不需配置
     assetsPublicPath: '/',
 
     /**
