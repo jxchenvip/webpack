@@ -13,12 +13,12 @@ const buildConfig = () => {
       notes: '开发环境',
       assetsPublicPath: '/',
     },
-    108: {
-      notes: '测试机器108',
+    test108: {
+      notes: '测试服务器108',
       assetsPublicPath: '/',
     },
-    109: {
-      notes: '测试机器109',
+    test109: {
+      notes: '测试服务器109',
       assetsPublicPath: '/',
     },
     staging: {
