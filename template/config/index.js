@@ -40,6 +40,7 @@ const buildConfig = () => {
     console.log(chalk.green(`【布署环境为】: ${notes}`));
     console.log(chalk.green(`【build】: ${JSON.stringify(others)}`));
   }
+  console.log(chalk.yellow(`【注意】检查projectName.conf中PRONAME是否与其他项目冲突`))
   return others;
 };
 
